@@ -7,9 +7,13 @@ public class Group : MonoBehaviour
 {
     // Time since last gravity tick
     float lastFall = 0;
+    
+    // Rotation index
+    public int rotation = 1;
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.activeBlockTag = this.tag;
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
@@ -58,15 +62,33 @@ public class Group : MonoBehaviour
 
             // See if valid
             if (isValidGridPos())
+            {
                 // It's valid. Update grid.
                 updateGrid();
+                if (rotation == 1)
+                {
+                    rotation = 2;
+                }
+                else if (rotation == 2)
+                {
+                    rotation = 3;
+                }
+                else if (rotation == 3)
+                {
+                    rotation = 4;
+                }
+                else
+                {
+                    rotation = 1;
+                }
+            }
             else
                 // It's not valid. revert.
                 transform.Rotate(0, 0, 90);
         }
 
         // Move Downwards and Fall
-        else if (Input.GetKey(KeyCode.DownArrow) ||
+        else if (Input.GetKeyDown(KeyCode.DownArrow) ||
                  Time.time - lastFall >= 1)
         {
             // Modify position
@@ -80,6 +102,8 @@ public class Group : MonoBehaviour
             }
             else
             {
+                // Remove tag from GameManager
+                GameManager.Instance.activeBlockTag = "";
                 // It's not valid. revert.
                 transform.position += new Vector3(0, 1, 0);
 
@@ -95,6 +119,13 @@ public class Group : MonoBehaviour
 
             lastFall = Time.time;
         }
+        // Deletes block if player pulls
+        if (GameManager.Instance.pullBlock)
+        {
+            GameManager.Instance.pullBlock = false;
+            Destroy(this.gameObject);
+        }
+        
     }
     bool isValidGridPos()
     {
