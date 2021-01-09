@@ -45,7 +45,7 @@ public class Playfield : MonoBehaviour
     {
         return ((int)pos.x >= 0 &&
                 (int)pos.x < w &&
-                (int)pos.y >= 0 && 
+                (int)pos.y >= 2 && 
                 (int)pos.y <= 24);
     }
 

@@ -128,6 +128,7 @@ public class Group : MonoBehaviour
         if (GameManager.Instance.pullBlock)
         {
             GameManager.Instance.pullBlock = false;
+            FindObjectOfType<Spawner>().spawnNext();
             Destroy(this.gameObject);
         }
         
