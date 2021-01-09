@@ -1,23 +1,24 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Game.Player.StateMachine
 {
-    public class JumpingState : PlayerBaseState
+    public class FallingState : PlayerBaseState
     {
         public override void EnterState(PlayerController player)
         {
-            player.GetRigibody.velocity *= (Vector2.right);
-            player.GetRigibody.AddForce(player.GetJumpForce() * Vector3.up, ForceMode2D.Impulse);
+
         }
 
         public override void FixedUpdate(PlayerController player)
         {
-            player.GetRigibody.velocity = Vector2.SmoothDamp(player.GetRigibody.velocity, player.targetMoveSpeed, ref player.m_VelocityVar, player.SmoothingFactor);
+
         }
 
         public override void OnCollisionEnter(PlayerController player, Collision2D _collider)
         {
+            if (player.GetCollisionsHelper.onGround) { player.ChangeState(player.GroundedState); }
         }
 
         public override void OnCollisionExit(PlayerController playerController, Collision2D _collision)
@@ -32,20 +33,17 @@ namespace _Game.Player.StateMachine
 
         public override void OnPlayerJump(PlayerController player)
         {
-            // ToDo: Other Particle Effect
 
-            //perhaps check if there is something we can climb or in ??? water?? idk dude haha
-            //throw new System.NotImplementedException();
         }
 
         public override void Update(PlayerController player)
         {
-            if (!player.GetCollisionsHelper.onGround && player.GetRigibody.velocity.y < 0)
+            if (!player.GetCollisionsHelper.onGround)
             {
-                player.ChangeState(player.FallingState);
+                player.GetRigibody.velocity += Vector2.up * Physics2D.gravity.y
+                * (player.fastFallMultiplier - 1) * Time.deltaTime;
             }
-
-            //throw new System.NotImplementedException();
+            else { player.ChangeState(player.GroundedState); }
         }
     }
 }

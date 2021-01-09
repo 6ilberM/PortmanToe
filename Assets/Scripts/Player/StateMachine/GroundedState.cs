@@ -28,13 +28,14 @@ namespace _Game.Player.StateMachine
 
         public override void OnPlayerJump(PlayerController player)
         {
-            player.GetRigibody.AddForce(PlayerController.jumpForce * Vector3.up, ForceMode2D.Impulse);
             player.ChangeState(player.JumpingState);
         }
 
         public override void Update(PlayerController player)
         {
-            throw new System.NotImplementedException();
+            player.CoyoteTimer = PlayerController.CoyoteTime;
+
+            if (!player.GetCollisionsHelper.onGround) { player.ChangeState(player.FallingState); }
         }
     }
 }

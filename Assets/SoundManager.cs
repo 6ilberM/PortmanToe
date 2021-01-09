@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     AudioSource clipSource;
     private static SoundManager _instance;
     public static SoundManager Instance { get { return _instance; } }
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -23,15 +24,14 @@ public class SoundManager : MonoBehaviour
     {
         clipSource = this.GetComponent<AudioSource>();
     }
+
     public void PlaySound(string s)
     {
-        for( int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < sounds.Length; i++)
         {
-            if(sounds[i].name == s)
+            if (sounds[i].name == s)
             {
                 clipSource.PlayOneShot(sounds[i]);
-                
-                
             }
         }
     }
