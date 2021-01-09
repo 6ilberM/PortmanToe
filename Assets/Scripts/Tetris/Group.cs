@@ -115,6 +115,8 @@ public class Group : MonoBehaviour
                 // Clear filled horizontal lines
                 Playfield.Instance.deleteFullRows();
 
+                // Play sound from SoundManager
+                SoundManager.Instance.PlaySound("TetrisLand");
                 // Spawn next Group
                 FindObjectOfType<Spawner>().spawnNext();
 
