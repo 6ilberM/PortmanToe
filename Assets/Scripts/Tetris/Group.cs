@@ -7,12 +7,17 @@ public class Group : MonoBehaviour
 {
     // Time since last gravity tick
     float lastFall = 0;
-    
+
+   
+
+    //public GameObject playfieldHolder;
     // Rotation index
     public int rotation = 1;
+
     // Start is called before the first frame update
     void Start()
     {
+        //playfieldCall = playfieldHolder.GetComponent<Playfield>();
         GameManager.Instance.activeBlockTag = this.tag;
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
@@ -108,7 +113,7 @@ public class Group : MonoBehaviour
                 transform.position += new Vector3(0, 1, 0);
 
                 // Clear filled horizontal lines
-                Playfield.deleteFullRows();
+                Playfield.Instance.deleteFullRows();
 
                 // Spawn next Group
                 FindObjectOfType<Spawner>().spawnNext();
@@ -131,16 +136,16 @@ public class Group : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            Vector2 v = Playfield.roundVec2(child.position);
+            Vector2 v = Playfield.Instance.roundVec2(child.position);
 
             // Not inside Border?
-            if (!Playfield.insideBorder(v))
+            if (!Playfield.Instance.insideBorder(v))
                 return false;
 
-            Debug.Log((int)v.x + " " + (int)v.y);
+            //Debug.Log((int)v.x + " " + (int)v.y);
             // Block in grid cell (and not part of same group)?
-            if (Playfield.grid[(int)v.x, (int)v.y] != null &&
-                Playfield.grid[(int)v.x, (int)v.y].parent != transform)
+            if (Playfield.Instance.grid[(int)v.x, (int)v.y] != null &&
+                Playfield.Instance.grid[(int)v.x, (int)v.y].parent != transform)
                 return false;
         }
         return true;
@@ -148,17 +153,17 @@ public class Group : MonoBehaviour
     void updateGrid()
     {
         // Remove old children from grid
-        for (int y = 0; y < Playfield.h; ++y)
-            for (int x = 0; x < Playfield.w; ++x)
-                if (Playfield.grid[x, y] != null)
-                    if (Playfield.grid[x, y].parent == transform)
-                        Playfield.grid[x, y] = null;
+        for (int y = 0; y < Playfield.Instance.h; ++y)
+            for (int x = 0; x < Playfield.Instance.w; ++x)
+                if (Playfield.Instance.grid[x, y] != null)
+                    if (Playfield.Instance.grid[x, y].parent == transform)
+                        Playfield.Instance.grid[x, y] = null;
 
         // Add new children to grid
         foreach (Transform child in transform)
         {
-            Vector2 v = Playfield.roundVec2(child.position);
-            Playfield.grid[(int)v.x, (int)v.y] = child;
+            Vector2 v = Playfield.Instance.roundVec2(child.position);
+            Playfield.Instance.grid[(int)v.x, (int)v.y] = child;
         }
     }
 }
