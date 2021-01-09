@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameManager.Instance.spawnBlock) { spawnNext(); }
     }
 
     public void spawnNext()
@@ -26,5 +26,6 @@ public class Spawner : MonoBehaviour
         // Spawn Group at current Position
         var obj = Instantiate(groups[i], transform.position, Quaternion.identity);
         obj.transform.parent = gameObject.transform;
+        GameManager.Instance.spawnBlock = false;
     }
 }
