@@ -91,6 +91,7 @@ public class Playfield : MonoBehaviour
         {
             if (isRowFull(y))
             {
+                GameManager.Instance.pullCharge++;
                 deleteRow(y);
                 decreaseRowsAbove(y + 1);
                 --y;

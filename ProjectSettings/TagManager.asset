@@ -51,3 +51,6 @@ TagManager:
   - name: Tetris
     uniqueID: 3616956105
     locked: 0
+  - name: TetrisPieces
+    uniqueID: 38806711
+    locked: 0
