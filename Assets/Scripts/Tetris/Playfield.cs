@@ -4,26 +4,52 @@ using UnityEngine;
 
 public class Playfield : MonoBehaviour
 {
+    private static Playfield _instance;
+    public GameObject mainCamera;
+    public GameObject CameraAnchor;
     // The Grid itself
-    public static int w = 10;
-    public static int h = 25;
-    public static Transform[,] grid = new Transform[w, h];
+    public int w = 10;
+    public int h = 25;
+    public Transform[,] grid;
 
-    public static Vector2 roundVec2(Vector2 v)
+    public static Playfield Instance { get { return _instance; } }
+    private void Awake()
     {
-        
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    private void Start()
+    {
+        grid = new Transform[w, h];
+    }
+    public Vector2 roundVec2(Vector2 v)
+    {
+
+        if(mainCamera.transform.position != CameraAnchor.transform.position)
+        {
+            float diffX = mainCamera.transform.position.x - CameraAnchor.transform.position.x;
+            float diffY = mainCamera.transform.position.y - CameraAnchor.transform.position.y;
+            v.x = v.x - diffX;
+            v.y = v.y - diffY;
+        }
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
     }
 
-    public static bool insideBorder(Vector2 pos)
+    public bool insideBorder(Vector2 pos)
     {
         return ((int)pos.x >= 0 &&
                 (int)pos.x < w &&
-                (int)pos.y >= 0 && 
+                (int)pos.y >= 2 && 
                 (int)pos.y <= 24);
     }
 
-    public static void deleteRow(int y)
+    public void deleteRow(int y)
     {
         for (int x = 0; x < w; ++x)
         {
@@ -32,7 +58,7 @@ public class Playfield : MonoBehaviour
         }
     }
 
-    public static void decreaseRow(int y)
+    public void decreaseRow(int y)
     {
         for (int x = 0; x < w; ++x)
         {
@@ -47,19 +73,19 @@ public class Playfield : MonoBehaviour
             }
         }
     }
-    public static void decreaseRowsAbove(int y)
+    public void decreaseRowsAbove(int y)
     {
         for (int i = y; i < h; ++i)
             decreaseRow(i);
     }
-    public static bool isRowFull(int y)
+    public bool isRowFull(int y)
     {
         for (int x = 0; x < w; ++x)
             if (grid[x, y] == null)
                 return false;
         return true;
     }
-    public static void deleteFullRows()
+    public void deleteFullRows()
     {
         for (int y = 0; y < h; ++y)
         {

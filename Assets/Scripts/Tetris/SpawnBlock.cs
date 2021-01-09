@@ -12,6 +12,12 @@ public class SpawnBlock : MonoBehaviour
     public GameObject SBlock;
     public GameObject TBlock;
     public GameObject ZBlock;
+    AudioSource spawnBlock;
+
+    private void Start()
+    {
+        spawnBlock = this.GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -19,6 +25,7 @@ public class SpawnBlock : MonoBehaviour
             if(GameManager.Instance.pullCharge > 0)
             {
                 GameManager.Instance.pullBlock = true;
+                spawnBlock.Play();
                 switch (GameManager.Instance.activeBlockTag)
                 {
                     case "I":

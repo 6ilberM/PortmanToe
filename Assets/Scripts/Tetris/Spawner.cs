@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour
         int i = Random.Range(0, groups.Length);
 
         // Spawn Group at current Position
-        Instantiate(groups[i], transform.position, Quaternion.identity);
+        var obj = Instantiate(groups[i], transform.position, Quaternion.identity);
+        obj.transform.parent = gameObject.transform;
     }
 }
