@@ -118,7 +118,7 @@ public class Group : MonoBehaviour
                 // Play sound from SoundManager
                 SoundManager.Instance.PlaySound("TetrisLand");
                 // Spawn next Group
-                FindObjectOfType<Spawner>().spawnNext();
+                GameManager.Instance.spawnBlock = true;
 
                 // Disable script
                 enabled = false;
@@ -130,7 +130,7 @@ public class Group : MonoBehaviour
         if (GameManager.Instance.pullBlock)
         {
             GameManager.Instance.pullBlock = false;
-            FindObjectOfType<Spawner>().spawnNext();
+            GameManager.Instance.spawnBlock = true;
             Destroy(this.gameObject);
         }
         

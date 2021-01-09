@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public string activeBlockTag;
     public int pullCharge = 1;
     public bool pullBlock;
+    public bool spawnBlock;
     public static GameManager Instance { get { return _instance; } }
 
 
