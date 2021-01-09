@@ -89,8 +89,6 @@ public class PlayerController : MonoBehaviour
         m_currentState = state;
         m_currentState.EnterState(this);
 
-        Debug.Log(m_currentState);
-
     }
 
     private void OnValidate()
