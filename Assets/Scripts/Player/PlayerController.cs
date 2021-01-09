@@ -1,14 +1,14 @@
 ﻿using _Game.Player.StateMachine;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D), typeof(CollisionHelper)), DisallowMultipleComponent()]
+[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), typeof(CollisionHelper)), DisallowMultipleComponent()]
 public class PlayerController : MonoBehaviour
 {
     public const float GroundSpeed = 6.66f;
     public const float StandardJumpForce = 6.5f;
-    public const float CoyoteTime = .156f;
+    public const float CoyoteTime = .285f;
 
-    [SerializeField, HideInInspector] private CapsuleCollider2D capsuleCollider;
+    [SerializeField, HideInInspector] private CircleCollider2D circleCollider;
     [SerializeField, HideInInspector] private Rigidbody2D rb;
     [SerializeField, HideInInspector] private CollisionHelper collisionsHelper;
 
@@ -39,8 +39,12 @@ public class PlayerController : MonoBehaviour
     public CollisionHelper GetCollisionsHelper => collisionsHelper;
 
     //vars
-    int _horizontal = 0;
-    int _vertical = 0;
+    private int _horizontal = 0;
+
+#pragma warning disable 0414 // Remove unread private members
+    private int _vertical = 0;
+#pragma warning restore 0414 // Remove unread private members
+
     internal Vector2 m_VelocityVar;
     private float coyoteTimer;
 
@@ -66,7 +70,6 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.W)) { _vertical = 1; }
 
         m_currentState.Update(this);
-
     }
 
     private void FixedUpdate() { m_currentState.FixedUpdate(this); }
@@ -85,13 +88,16 @@ public class PlayerController : MonoBehaviour
 
         m_currentState = state;
         m_currentState.EnterState(this);
+
+        Debug.Log(m_currentState);
+
     }
 
     private void OnValidate()
     {
         if (Application.isPlaying) { return; }
 
-        if (capsuleCollider == null) { capsuleCollider = GetComponent<CapsuleCollider2D>(); }
+        if (circleCollider == null) { circleCollider = GetComponent<CircleCollider2D>(); }
         if (rb == null) { rb = GetComponent<Rigidbody2D>(); }
         if (collisionsHelper == null) { collisionsHelper = GetComponent<CollisionHelper>(); }
     }
