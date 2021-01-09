@@ -8,8 +8,6 @@ public class Group : MonoBehaviour
     // Time since last gravity tick
     float lastFall = 0;
 
-   
-
     //public GameObject playfieldHolder;
     // Rotation index
     public int rotation = 1;
