@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3140134996264508057}
   - component: {fileID: 3140134996264508058}
   - component: {fileID: 3140134996264508056}
+  - component: {fileID: 1695871855}
   - component: {fileID: 3140134996264508061}
   - component: {fileID: 3140134996264508062}
   m_Layer: 0
@@ -97,6 +98,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f99a5bfc3b4f546999f15be08ed0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  capsuleCollider: {fileID: 3140134996264508062}
+  rb: {fileID: 3140134996264508061}
+  collisionsHelper: {fileID: 1695871855}
+  moveSpeed: 6.66
+  jumpHeight: 1.38
+  fastFallMultiplier: 2.45
+  m_smoothingFactor: 0.1666
+--- !u!114 &1695871855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3140134996264508059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b5227b270f4a245bb70a81f2748737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  onGround: 0
+  onWall: 0
+  onRightWall: 0
+  onLeftWall: 0
+  wallSide: 0
+  collisionRadius: 0.15
+  bottomOffset: {x: 0, y: -0.55}
+  rightOffset: {x: 0.55, y: 0}
+  leftOffset: {x: -0.55, y: 0}
 --- !u!50 &3140134996264508061
 Rigidbody2D:
   serializedVersion: 4
