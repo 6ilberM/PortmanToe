@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             tetrisPaused = !tetrisPaused;
-            pauseText.SetActive(!tetrisPaused);
-            pauseText.GetComponent<DG.Tweening.DOTweenAnimation>().enabled = false;
+
+            pauseText.SetActive(tetrisPaused);
         }
     }
 }
