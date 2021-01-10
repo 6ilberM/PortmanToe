@@ -12,11 +12,11 @@ public class SpawnBlock : MonoBehaviour
     public GameObject SBlock;
     public GameObject TBlock;
     public GameObject ZBlock;
-    AudioSource spawnBlock;
+    
 
     private void Start()
     {
-        spawnBlock = this.GetComponent<AudioSource>();
+        
     }
     private void Update()
     {
@@ -25,7 +25,7 @@ public class SpawnBlock : MonoBehaviour
             if(GameManager.Instance.pullCharge > 0)
             {
                 GameManager.Instance.pullBlock = true;
-                spawnBlock.Play();
+                SoundManager.Instance.PlaySound("SpawnBlock");
                 switch (GameManager.Instance.activeBlockTag)
                 {
                     case "I":
