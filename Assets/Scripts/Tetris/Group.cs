@@ -35,6 +35,7 @@ public class Group : MonoBehaviour
     {
         if (!GameManager.Instance.tetrisPaused)
         {
+            GameManager.Instance.activeBlockRot = rotation * 90;
             // Move Left
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -114,6 +115,7 @@ public class Group : MonoBehaviour
                 {
                     // Remove tag from GameManager
                     GameManager.Instance.activeBlockTag = "";
+
                     // It's not valid. revert.
                     transform.position += new Vector3(0, 1, 0);
 
@@ -122,6 +124,7 @@ public class Group : MonoBehaviour
 
                     // Play sound from SoundManager
                     SoundManager.Instance.PlaySound("TetrisLand");
+
                     // Spawn next Group
                     GameManager.Instance.spawnBlock = true;
 
@@ -138,7 +141,18 @@ public class Group : MonoBehaviour
 
     private void PullBlock()
     {
-        GameManager.Instance.spawnBlock = true;
+        if (this.enabled)
+        {
+            if (!GameManager.Instance.destroyFake)
+            {
+                GameManager.Instance.spawnBlock = true;
+                Debug.Log("Been Pulled");
+                Destroy(this.gameObject);
+            }
+        } else
+        {
+
+        }
     }
 
     bool isValidGridPos()
@@ -152,10 +166,14 @@ public class Group : MonoBehaviour
                 return false;
 
             //Debug.Log((int)v.x + " " + (int)v.y);
+
             // Block in grid cell (and not part of same group)?
             if (Playfield.Instance.grid[(int)v.x, (int)v.y] != null &&
                 Playfield.Instance.grid[(int)v.x, (int)v.y].parent != transform)
+            {
+                Debug.Log("Hit something");
                 return false;
+            }
         }
         return true;
     }

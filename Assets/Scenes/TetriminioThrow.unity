@@ -169,12 +169,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeBlockTag: 
+  activeBlockRot: 0
+  activeFakeRot: 0
+  canPlace: 0
+  destroyFake: 0
   pullCharge: 1
   onPullBlock:
     m_PersistentCalls:
       m_Calls: []
   spawnBlock: 0
   tetrisPaused: 1
+  pauseText: {fileID: 0}
 --- !u!4 &115189803
 Transform:
   m_ObjectHideFlags: 0
@@ -450,7 +455,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -678011191
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
