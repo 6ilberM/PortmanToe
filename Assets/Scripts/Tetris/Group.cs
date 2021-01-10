@@ -12,6 +12,11 @@ public class Group : MonoBehaviour
     // Rotation index
     public int rotation = 1;
 
+    private void Awake()
+    {
+        GameManager.Instance.onPullBlock.AddListener(PullBlock);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -126,17 +131,16 @@ public class Group : MonoBehaviour
 
                 lastFall = Time.time;
             }
-            
+
         }
         // Deletes block if player pulls
-        if (GameManager.Instance.pullBlock)
-        {
-            GameManager.Instance.pullBlock = false;
-            GameManager.Instance.spawnBlock = true;
-            Destroy(this.gameObject);
-        }
-
     }
+
+    private void PullBlock()
+    {
+        GameManager.Instance.spawnBlock = true;
+    }
+
     bool isValidGridPos()
     {
         foreach (Transform child in transform)
@@ -170,5 +174,10 @@ public class Group : MonoBehaviour
             Vector2 v = Playfield.Instance.roundVec2(child.position);
             Playfield.Instance.grid[(int)v.x, (int)v.y] = child;
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.onPullBlock.RemoveListener(PullBlock);
     }
 }

@@ -164,9 +164,6 @@ MonoBehaviour:
   SBlock: {fileID: 5525594397634912924, guid: 6277ee36232f1084c88666ffabe2acb4, type: 3}
   TBlock: {fileID: 4090741101668354954, guid: 71c3a766b66abe347baf7b8b5ee6fa3b, type: 3}
   ZBlock: {fileID: 5295692727824261107, guid: e6f49906204ca0240a18cacd56dbd44c, type: 3}
-  onTetrisPull:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &115189801
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +195,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBlockTag: 
   pullCharge: 1
-  pullBlock: 0
+  onPullBlock:
+    m_PersistentCalls:
+      m_Calls: []
   spawnBlock: 0
   tetrisPaused: 1
 --- !u!4 &115189803
@@ -7101,6 +7100,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3140134996264508056, guid: 46d68119ba3f6eb479e1be8a6ae085cc,
+        type: 3}
+      propertyPath: tetriminioSpawner
+      value: 
+      objectReference: {fileID: 112938308}
     - target: {fileID: 3140134996264508057, guid: 46d68119ba3f6eb479e1be8a6ae085cc,
         type: 3}
       propertyPath: m_RootOrder

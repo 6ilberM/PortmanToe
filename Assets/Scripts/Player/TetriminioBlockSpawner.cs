@@ -14,9 +14,6 @@ public class TetriminioBlockSpawner : MonoBehaviour
     public GameObject TBlock = default;
     public GameObject ZBlock = default;
 
-    [Space(8)]
-    public UnityEvent onTetrisPull;
-
     private GameObject tetrminio;
 
     public GameObject Tetrminio => tetrminio;
@@ -25,11 +22,8 @@ public class TetriminioBlockSpawner : MonoBehaviour
     {
         bool result = false;
 
-        if (GameManager.Instance.pullCharge > 0)
+        if (GameManager.Instance.pullCharge > 0 && !GameManager.Instance.tetrisPaused)
         {
-            GameManager.Instance.pullBlock = true;
-            SoundManager.Instance.PlaySound("SpawnBlock");
-
             switch (GameManager.Instance.activeBlockTag)
             {
                 case "I":
@@ -56,8 +50,11 @@ public class TetriminioBlockSpawner : MonoBehaviour
                     break;
             }
             result = true;
-            GameManager.Instance.pullCharge--;
+
+            GameManager.Instance.onPullBlock?.Invoke();
+            SoundManager.Instance.PlaySound("SpawnBlock");
         }
+
         return result;
     }
 

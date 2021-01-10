@@ -74,14 +74,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            bool SourcePrefab = tetriminioSpawner.TryPopulateTetriminio();
-
-            if (SourcePrefab)
+            if (tetriminioSpawner.TryPopulateTetriminio())
             {
                 GameObject tetriminioInstance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, parent: null, instantiateInWorldSpace: true);
-                tetriminioInstance.transform.position = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
+                var point = transform.position + Vector3.right * (spriteRenderer.flipX ? -2.5f : 2.5f);
+                tetriminioInstance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
             }
-
         }
 
         m_currentState.Update(this);
