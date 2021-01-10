@@ -28,101 +28,105 @@ public class Group : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (!GameManager.Instance.tetrisPaused)
         {
-            // Modify position
-            transform.position += new Vector3(-1, 0, 0);
-
-            // See if valid
-            if (isValidGridPos())
-                // It's valid. Update grid.
-                updateGrid();
-            else
-                // It's not valid. revert.
-                transform.position += new Vector3(1, 0, 0);
-        }
-
-        // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            // Modify position
-            transform.position += new Vector3(1, 0, 0);
-
-            // See if valid
-            if (isValidGridPos())
-                // It's valid. Update grid.
-                updateGrid();
-            else
-                // It's not valid. revert.
-                transform.position += new Vector3(-1, 0, 0);
-        }
-
-        // Rotate
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            transform.Rotate(0, 0, -90);
-
-            // See if valid
-            if (isValidGridPos())
+            // Move Left
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                // It's valid. Update grid.
-                updateGrid();
-                if (rotation == 1)
+                // Modify position
+                transform.position += new Vector3(-1, 0, 0);
+
+                // See if valid
+                if (isValidGridPos())
+                    // It's valid. Update grid.
+                    updateGrid();
+                else
+                    // It's not valid. revert.
+                    transform.position += new Vector3(1, 0, 0);
+            }
+
+            // Move Right
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                // Modify position
+                transform.position += new Vector3(1, 0, 0);
+
+                // See if valid
+                if (isValidGridPos())
+                    // It's valid. Update grid.
+                    updateGrid();
+                else
+                    // It's not valid. revert.
+                    transform.position += new Vector3(-1, 0, 0);
+            }
+
+            // Rotate
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                transform.Rotate(0, 0, -90);
+
+                // See if valid
+                if (isValidGridPos())
                 {
-                    rotation = 2;
+                    // It's valid. Update grid.
+                    updateGrid();
+                    if (rotation == 1)
+                    {
+                        rotation = 2;
+                    }
+                    else if (rotation == 2)
+                    {
+                        rotation = 3;
+                    }
+                    else if (rotation == 3)
+                    {
+                        rotation = 4;
+                    }
+                    else
+                    {
+                        rotation = 1;
+                    }
                 }
-                else if (rotation == 2)
+                else
+                    // It's not valid. revert.
+                    transform.Rotate(0, 0, 90);
+            }
+
+            // Move Downwards and Fall
+            else if (Input.GetKeyDown(KeyCode.DownArrow) ||
+                     Time.time - lastFall >= 1)
+            {
+                // Modify position
+                transform.position += new Vector3(0, -1, 0);
+
+                // See if valid
+                if (isValidGridPos())
                 {
-                    rotation = 3;
-                }
-                else if (rotation == 3)
-                {
-                    rotation = 4;
+                    // It's valid. Update grid.
+                    updateGrid();
                 }
                 else
                 {
-                    rotation = 1;
+                    // Remove tag from GameManager
+                    GameManager.Instance.activeBlockTag = "";
+                    // It's not valid. revert.
+                    transform.position += new Vector3(0, 1, 0);
+
+                    // Clear filled horizontal lines
+                    Playfield.Instance.deleteFullRows();
+
+                    // Play sound from SoundManager
+                    SoundManager.Instance.PlaySound("TetrisLand");
+                    // Spawn next Group
+                    GameManager.Instance.spawnBlock = true;
+
+                    // Disable script
+                    enabled = false;
                 }
+
+                lastFall = Time.time;
             }
-            else
-                // It's not valid. revert.
-                transform.Rotate(0, 0, 90);
-        }
-
-        // Move Downwards and Fall
-        else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-                 Time.time - lastFall >= 1)
-        {
-            // Modify position
-            transform.position += new Vector3(0, -1, 0);
-
-            // See if valid
-            if (isValidGridPos())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-            }
-            else
-            {
-                // Remove tag from GameManager
-                GameManager.Instance.activeBlockTag = "";
-                // It's not valid. revert.
-                transform.position += new Vector3(0, 1, 0);
-
-                // Clear filled horizontal lines
-                Playfield.Instance.deleteFullRows();
-
-                // Play sound from SoundManager
-                SoundManager.Instance.PlaySound("TetrisLand");
-                // Spawn next Group
-                GameManager.Instance.spawnBlock = true;
-
-                // Disable script
-                enabled = false;
-            }
-
-            lastFall = Time.time;
+            
         }
         // Deletes block if player pulls
         if (GameManager.Instance.pullBlock)
@@ -131,7 +135,7 @@ public class Group : MonoBehaviour
             GameManager.Instance.spawnBlock = true;
             Destroy(this.gameObject);
         }
-        
+
     }
     bool isValidGridPos()
     {

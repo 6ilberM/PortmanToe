@@ -10,6 +10,7 @@ public class Playfield : MonoBehaviour
     // The Grid itself
     public int w = 10;
     public int h = 25;
+    
     public Transform[,] grid;
 
     public static Playfield Instance { get { return _instance; } }
@@ -26,7 +27,7 @@ public class Playfield : MonoBehaviour
     }
     private void Start()
     {
-        grid = new Transform[w, h];
+        grid = new Transform[w, (h) + 2];
     }
     public Vector2 roundVec2(Vector2 v)
     {
@@ -45,7 +46,7 @@ public class Playfield : MonoBehaviour
     {
         return ((int)pos.x >= 0 &&
                 (int)pos.x < w &&
-                (int)pos.y >= 2 && 
+                (int)pos.y >= 0 && 
                 (int)pos.y <= 24);
     }
 
