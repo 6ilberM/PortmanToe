@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 6586885756062250451}
   - component: {fileID: 3745664655112221610}
   - component: {fileID: 3745664655112221609}
+  - component: {fileID: 144550211181241785}
   m_Layer: 9
   m_Name: T-t_Piece
   m_TagString: T
@@ -274,7 +275,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!66 &3745664655112221609
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -313,16 +314,6 @@ CompositeCollider2D:
         Y: 14999707
       - X: -4999707
         Y: 5000000
-  - m_Collider: {fileID: 3236486806681145191}
-    m_ColliderPaths:
-    - - X: 14999707
-        Y: 5000000
-      - X: 14999707
-        Y: 15000000
-      - X: 5000000
-        Y: 14999707
-      - X: 5000293
-        Y: 5000000
   - m_Collider: {fileID: 9047812921407285555}
     m_ColliderPaths:
     - - X: -5000293
@@ -332,6 +323,16 @@ CompositeCollider2D:
       - X: -15000000
         Y: 14999707
       - X: -14999707
+        Y: 5000000
+  - m_Collider: {fileID: 3236486806681145191}
+    m_ColliderPaths:
+    - - X: 14999707
+        Y: 5000000
+      - X: 14999707
+        Y: 15000000
+      - X: 5000000
+        Y: 14999707
+      - X: 5000293
         Y: 5000000
   m_CompositePaths:
     m_Paths:
@@ -345,6 +346,18 @@ CompositeCollider2D:
       - {x: -0.4999414, y: -0.5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &144550211181241785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4090741101668354954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d786473dfd32119439b2b030e83edcac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8551830574427328784
 GameObject:
   m_ObjectHideFlags: 0
