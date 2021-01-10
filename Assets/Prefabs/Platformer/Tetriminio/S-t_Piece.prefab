@@ -294,16 +294,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 2138540098865362780}
-    m_ColliderPaths:
-    - - X: 4999707
-        Y: -5000000
-      - X: 4999707
-        Y: 5000000
-      - X: -5000000
-        Y: 4999707
-      - X: -4999707
-        Y: -5000000
   - m_Collider: {fileID: 6847042366519985883}
     m_ColliderPaths:
     - - X: -5000293
@@ -334,6 +324,16 @@ CompositeCollider2D:
         Y: 14999707
       - X: 5000293
         Y: 5000000
+  - m_Collider: {fileID: 2138540098865362780}
+    m_ColliderPaths:
+    - - X: 4999707
+        Y: -5000000
+      - X: 4999707
+        Y: 5000000
+      - X: -5000000
+        Y: 4999707
+      - X: -4999707
+        Y: -5000000
   m_CompositePaths:
     m_Paths:
     - - {x: -1.4999707, y: -0.4999707}
@@ -358,6 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d786473dfd32119439b2b030e83edcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  rb: {fileID: 1949036249615282792}
+  b_displayDebug: 1
 --- !u!1 &7236648036169102878
 GameObject:
   m_ObjectHideFlags: 0
