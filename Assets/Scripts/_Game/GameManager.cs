@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public UnityEngine.Events.UnityEvent onPullBlock;
 
     public bool spawnBlock;
-    public bool tetrisPaused = true;
+    public bool tetrisPaused = false;
+    public GameObject pauseText;
     public static GameManager Instance { get { return _instance; } }
 
 
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             tetrisPaused = !tetrisPaused;
+            pauseText.SetActive(!tetrisPaused);
+            pauseText.GetComponent<DG.Tweening.DOTweenAnimation>().enabled = false;
         }
     }
 }
