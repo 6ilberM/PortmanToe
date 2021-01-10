@@ -139,6 +139,34 @@ BoxCollider2D:
     type: 3}
   m_PrefabInstance: {fileID: 5098521496854420078}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &112938307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3140134996264508059, guid: 46d68119ba3f6eb479e1be8a6ae085cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 3140134995322603027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &112938308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112938307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841eef1e1b566b24287c9efa6c8016a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IBlock: {fileID: 5098521496661252186, guid: 8b13fb5cfcdeeee4ab24463b74d544eb, type: 3}
+  JBlock: {fileID: 7010569199626710133, guid: 893e75e16d9fc8743bbd23026d775291, type: 3}
+  LBlock: {fileID: 2168332212072604959, guid: 84c2891ce4ad0fe4893bf8b7a1e681bd, type: 3}
+  OBlock: {fileID: 9133544961723606964, guid: eaa60be57dcd9a8488d25480b2a295e5, type: 3}
+  SBlock: {fileID: 5525594397634912924, guid: 6277ee36232f1084c88666ffabe2acb4, type: 3}
+  TBlock: {fileID: 4090741101668354954, guid: 71c3a766b66abe347baf7b8b5ee6fa3b, type: 3}
+  ZBlock: {fileID: 5295692727824261107, guid: e6f49906204ca0240a18cacd56dbd44c, type: 3}
+  onTetrisPull:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &115189801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2823,6 +2851,7 @@ GameObject:
   - component: {fileID: 503312758}
   - component: {fileID: 503312757}
   - component: {fileID: 503312759}
+  - component: {fileID: 503312760}
   m_Layer: 5
   m_Name: PausedText
   m_TagString: Untagged
@@ -2957,6 +2986,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9371023ce19ed334cb07d0f00f2cf374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &503312760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503312755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  isSpeedBased: 0
+  hasOnStart: 0
+  hasOnPlay: 0
+  hasOnUpdate: 0
+  hasOnStepComplete: 0
+  hasOnComplete: 0
+  hasOnTweenCreated: 0
+  hasOnRewind: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  targetIsSelf: 1
+  targetGO: {fileID: 0}
+  tweenTargetIsTargetGO: 1
+  delay: 0
+  duration: 1
+  easeType: 6
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 1
+  loops: -1
+  id: 
+  isRelative: 0
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 1
+  isActive: 1
+  isValid: 1
+  target: {fileID: 503312757}
+  animationType: 7
+  targetType: 15
+  forcedTargetType: 0
+  autoPlay: 1
+  useTargetAsV3: 0
+  endValueFloat: 0
+  endValueV3: {x: 0, y: 0, z: 0}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 0
+  optionalFloat0: 0
+  optionalInt0: 0
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalString: 
 --- !u!1 &505068485
 GameObject:
   m_ObjectHideFlags: 0

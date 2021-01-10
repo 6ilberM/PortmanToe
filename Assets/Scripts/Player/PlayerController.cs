@@ -72,9 +72,16 @@ public class PlayerController : MonoBehaviour
 
         if (_horizontal != 0) { spriteRenderer.flipX = _horizontal < 0 ? true : false; }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            //tetriminioSpawner.Spawn
+            bool SourcePrefab = tetriminioSpawner.TryPopulateTetriminio();
+
+            if (SourcePrefab)
+            {
+                GameObject tetriminioInstance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, parent: null, instantiateInWorldSpace: true);
+                tetriminioInstance.transform.position = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
+            }
+
         }
 
         m_currentState.Update(this);

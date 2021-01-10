@@ -13,7 +13,6 @@ namespace _Game.Player.StateMachine
 
         public override void OnCollisionEnter(PlayerController player, Collision2D _collider)
         {
-            //ToDo: Replace this with  fancy check overlap class
         }
 
         public override void OnCollisionExit(PlayerController playerController, Collision2D _collision)

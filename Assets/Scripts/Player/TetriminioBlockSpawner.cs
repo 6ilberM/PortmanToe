@@ -14,55 +14,51 @@ public class TetriminioBlockSpawner : MonoBehaviour
     public GameObject TBlock = default;
     public GameObject ZBlock = default;
 
+    [Space(8)]
     public UnityEvent onTetrisPull;
 
-    private void Start()
-    {
+    private GameObject tetrminio;
 
-    }
+    public GameObject Tetrminio => tetrminio;
 
-    private void Update()
+    public bool TryPopulateTetriminio()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        bool result = false;
+
+        if (GameManager.Instance.pullCharge > 0)
         {
-            if (GameManager.Instance.pullCharge > 0)
+            GameManager.Instance.pullBlock = true;
+            SoundManager.Instance.PlaySound("SpawnBlock");
+
+            switch (GameManager.Instance.activeBlockTag)
             {
-                GameManager.Instance.pullBlock = true;
-                SoundManager.Instance.PlaySound("SpawnBlock");
+                case "I":
+                    tetrminio = IBlock;
+                    break;
 
-                switch (GameManager.Instance.activeBlockTag)
-                {
-                    case "I":
-                        Debug.Log("Got an I block");
-                        break;
-
-                    case "J":
-                        Debug.Log("Got an J block");
-                        break;
-
-                    case "L":
-                        Debug.Log("Got an L block");
-                        break;
-
-                    case "O":
-                        Debug.Log("Got an O block");
-                        break;
-
-                    case "S":
-                        Debug.Log("Got an S block");
-                        break;
-
-                    case "T":
-                        Debug.Log("Got an T block");
-                        break;
-
-                    case "Z":
-                        Debug.Log("Got an Z block");
-                        break;
-                }
-                GameManager.Instance.pullCharge--;
-
+                case "J":
+                    tetrminio = JBlock;
+                    break;
+                case "L":
+                    tetrminio = LBlock;
+                    break;
+                case "O":
+                    tetrminio = OBlock;
+                    break;
+                case "S":
+                    tetrminio = SBlock;
+                    break;
+                case "T":
+                    tetrminio = TBlock;
+                    break;
+                case "Z":
+                    tetrminio = ZBlock;
+                    break;
             }
+            result = true;
+            GameManager.Instance.pullCharge--;
         }
+        return result;
     }
+
 }
