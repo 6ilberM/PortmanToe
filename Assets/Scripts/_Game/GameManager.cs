@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool destroyFake;
     public int pullCharge = 1;
     public int spawnPoint;
+    public int lives = 3;
     public GameObject[] spawnedBlocks;
 
     [Space(8)]

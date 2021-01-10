@@ -118,9 +118,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() 
     {
         m_currentState.FixedUpdate(this);
-        if(rb.velocity.y > 10f)
+        if(rb.velocity.y > 6f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 10f);
+            rb.velocity = new Vector2(rb.velocity.x, 6f);
         }
     }
 
