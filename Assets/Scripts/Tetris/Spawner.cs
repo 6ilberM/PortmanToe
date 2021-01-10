@@ -20,12 +20,20 @@ public class Spawner : MonoBehaviour
 
     public void spawnNext()
     {
+        StartCoroutine(Spawn());
+    }
+    
+    IEnumerator Spawn()
+    {
+        GameManager.Instance.spawnBlock = false;
+        yield return new WaitForSeconds(0.1f);
+
         // Random Index
         int i = Random.Range(0, groups.Length);
 
         // Spawn Group at current Position
         var obj = Instantiate(groups[i], transform.position, Quaternion.identity);
         obj.transform.parent = gameObject.transform;
-        GameManager.Instance.spawnBlock = false;
+        
     }
 }

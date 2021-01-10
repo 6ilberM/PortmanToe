@@ -84,25 +84,24 @@ public class PlayerController : MonoBehaviour
                 {
                     
                     GameManager.Instance.activeFakeRot = GameManager.Instance.activeBlockRot;
-                    Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -2.5f : 2.5f);
+                    Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
                     instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeBlockRot - 90f), this.transform);
                     instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
                     eCounter = 1;
                 }
-                else
+                else if(GameManager.Instance.canPlace)
                 {
-                    if (GameManager.Instance.canPlace)
-                    {
+                    
                         GameManager.Instance.destroyFake = true;
                         GameManager.Instance.canPlace = false;
-                        Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -2.5f : 2.5f);
+                        Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
                         instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeFakeRot - 90f));
                         instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
                         eCounter = 0;
                         
                         heldTetriminio = instance.GetComponent<WorldTetriminioController>();
                         isHolding = true;
-                    }
+                    
                 }
                 
             }

@@ -6,6 +6,7 @@ public class FakeTetraScript : MonoBehaviour
 {
     Color baseColor;
     Color newColor;
+    public float parentVelocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,14 @@ public class FakeTetraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        parentVelocity = transform.parent.GetComponent<Rigidbody2D>().velocity.x;
+        if (transform.parent.GetComponent<Rigidbody2D>().velocity.x >= 0.1f)
+        {
+            transform.localPosition = new Vector2(1.5f, transform.localPosition.y);
+        } else if(transform.parent.GetComponent<Rigidbody2D>().velocity.x <= -0.1f)
+        {
+            transform.localPosition = new Vector2(-1.5f, transform.localPosition.y);
+        }
         if (GameManager.Instance.destroyFake)
         {
             Debug.Log("Bye");
