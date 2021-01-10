@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5098521496105950673}
   - component: {fileID: 5098521496105950638}
   - component: {fileID: 5098521496105950639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: I-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5098521496335617100}
   - component: {fileID: 5098521496335617101}
   - component: {fileID: 5098521496335617098}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: --Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 5098521496661252182}
   - component: {fileID: 5098521496661252184}
   - component: {fileID: 5098521496661252187}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: I-t_Piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 5098521496661252186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.8, y: 6.53, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 5098521497317874999}
   - {fileID: 5098521497664803387}
@@ -295,50 +295,50 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 5098521497664803385}
     m_ColliderPaths:
-    - - X: 2499707
+    - - X: 4999707
         Y: 0
-      - X: 2499707
-        Y: 5000000
-      - X: -2500000
-        Y: 4999707
-      - X: -2499707
+      - X: 4999707
+        Y: 10000000
+      - X: -5000000
+        Y: 9999707
+      - X: -4999707
         Y: 0
   - m_Collider: {fileID: 5098521496105950639}
     m_ColliderPaths:
-    - - X: 2499707
-        Y: -5000000
-      - X: 2499707
+    - - X: 4999707
+        Y: -10000000
+      - X: 4999707
         Y: 0
-      - X: -2500000
+      - X: -5000000
         Y: -293
-      - X: -2499707
-        Y: -5000000
+      - X: -4999707
+        Y: -10000000
   - m_Collider: {fileID: 5098521496335617098}
     m_ColliderPaths:
-    - - X: 2499707
+    - - X: 4999707
+        Y: -20000000
+      - X: 4999707
         Y: -10000000
-      - X: 2499707
-        Y: -5000000
-      - X: -2500000
-        Y: -5000293
-      - X: -2499707
-        Y: -10000000
+      - X: -5000000
+        Y: -10000293
+      - X: -4999707
+        Y: -20000000
   - m_Collider: {fileID: 5098521497317874997}
     m_ColliderPaths:
-    - - X: 2499707
-        Y: 5000000
-      - X: 2499707
-        Y: 10000000
-      - X: -2500000
-        Y: 9999707
-      - X: -2499707
-        Y: 5000000
+    - - X: 4999707
+        Y: 10000005
+      - X: 4999707
+        Y: 20000004
+      - X: -5000000
+        Y: 19999711
+      - X: -4999707
+        Y: 10000005
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.24994141, y: -1}
-      - {x: 0.24994141, y: 1}
-      - {x: -0.25, y: 0.9999414}
-      - {x: -0.24994141, y: -1}
+    - - {x: 0.4999414, y: -2}
+      - {x: 0.4999414, y: 2.0000005}
+      - {x: -0.5, y: 1.9999418}
+      - {x: -0.4999414, y: -2}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1 &5098521497317874998
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 5098521497317874999}
   - component: {fileID: 5098521497317874996}
   - component: {fileID: 5098521497317874997}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: --Top--
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 5098521497664803387}
   - component: {fileID: 5098521497664803384}
   - component: {fileID: 5098521497664803385}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: I-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
