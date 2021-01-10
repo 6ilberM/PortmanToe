@@ -101,6 +101,8 @@ MonoBehaviour:
   circleCollider: {fileID: 96797349}
   rb: {fileID: 3140134996264508061}
   collisionsHelper: {fileID: 1695871855}
+  spriteRenderer: {fileID: 3140134996264508058}
+  tetrisPlacer: {fileID: 0}
   moveSpeed: 6.66
   jumpHeight: 1.38
   fastFallMultiplier: 2.45

@@ -7,7 +7,10 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public string activeBlockTag;
     public int pullCharge = 1;
-    public bool pullBlock;
+
+    [Space(8)]
+    public UnityEngine.Events.UnityEvent onPullBlock;
+
     public bool spawnBlock;
     public bool tetrisPaused = true;
     public static GameManager Instance { get { return _instance; } }
@@ -19,15 +22,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else
-        {
-            _instance = this;
-        }
+        else { _instance = this; }
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             tetrisPaused = !tetrisPaused;
         }
