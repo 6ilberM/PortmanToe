@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public bool canPlace;
     public bool destroyFake;
     public int pullCharge = 1;
+    public int spawnPoint;
+    public GameObject[] spawnedBlocks;
 
     [Space(8)]
     public UnityEngine.Events.UnityEvent onPullBlock;
