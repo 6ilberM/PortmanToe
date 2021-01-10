@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 1695871855}
   - component: {fileID: 3140134996264508061}
   - component: {fileID: 96797349}
+  - component: {fileID: 3643036707057944421}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,9 +103,9 @@ MonoBehaviour:
   rb: {fileID: 3140134996264508061}
   collisionsHelper: {fileID: 1695871855}
   spriteRenderer: {fileID: 3140134996264508058}
-  tetrisPlacer: {fileID: 0}
+  tetriminioSpawner: {fileID: 3643036707057944421}
   moveSpeed: 6.66
-  jumpHeight: 1.38
+  jumpHeight: 7
   fastFallMultiplier: 2.45
   m_smoothingFactor: 0.1666
 --- !u!114 &1695871855
@@ -151,7 +152,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &96797349
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,3 +169,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3643036707057944421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3140134996264508059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841eef1e1b566b24287c9efa6c8016a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IBlock: {fileID: 5098521496661252186, guid: 8b13fb5cfcdeeee4ab24463b74d544eb, type: 3}
+  JBlock: {fileID: 7010569199626710133, guid: 893e75e16d9fc8743bbd23026d775291, type: 3}
+  LBlock: {fileID: 2168332212072604959, guid: 84c2891ce4ad0fe4893bf8b7a1e681bd, type: 3}
+  OBlock: {fileID: 9133544961723606964, guid: eaa60be57dcd9a8488d25480b2a295e5, type: 3}
+  SBlock: {fileID: 5525594397634912924, guid: 6277ee36232f1084c88666ffabe2acb4, type: 3}
+  TBlock: {fileID: 4090741101668354954, guid: 71c3a766b66abe347baf7b8b5ee6fa3b, type: 3}
+  ZBlock: {fileID: 5295692727824261107, guid: e6f49906204ca0240a18cacd56dbd44c, type: 3}

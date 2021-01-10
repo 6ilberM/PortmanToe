@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
     public float SmoothingFactor => m_smoothingFactor;
 
     public CollisionHelper GetCollisionsHelper => collisionsHelper;
-
     //vars
     private int _horizontal = 0;
 
@@ -46,6 +45,8 @@ public class PlayerController : MonoBehaviour
     private int _vertical = 0;
 #pragma warning restore 0414 // Remove unread private members
 
+    private WorldTetriminioController heldTetriminio = null;
+    private bool isHolding = false;
     internal Vector2 m_VelocityVar;
     private float coyoteTimer;
 
@@ -72,14 +73,23 @@ public class PlayerController : MonoBehaviour
 
         if (_horizontal != 0) { spriteRenderer.flipX = _horizontal < 0 ? true : false; }
 
+        //ToDo: Move Functionality functionality under this to other functions or classes
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (tetriminioSpawner.TryPopulateTetriminio())
             {
-                GameObject tetriminioInstance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, parent: null, instantiateInWorldSpace: true);
+                var instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, parent: null, instantiateInWorldSpace: true);
                 var point = transform.position + Vector3.right * (spriteRenderer.flipX ? -2.5f : 2.5f);
-                tetriminioInstance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
+                instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
+
+                heldTetriminio = instance.GetComponent<WorldTetriminioController>();
+                isHolding = true;
             }
+        }
+
+        if (isHolding && Input.GetKeyDown(KeyCode.Space))
+        {
+            heldTetriminio.ToggleFreezePosition();
         }
 
         m_currentState.Update(this);

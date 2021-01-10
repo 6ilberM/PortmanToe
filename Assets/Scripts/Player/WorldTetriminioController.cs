@@ -5,13 +5,28 @@ using UnityEngine;
 [AddComponentMenu("Platfomer/World Tetriminio")]
 public class WorldTetriminioController : MonoBehaviour
 {
-    private LayerMask groundLayer;
-    private Rigidbody2D m_rb = default;
-    private bool b_displayDebug = true;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Rigidbody2D rb = default;
+    [SerializeField] private bool b_displayDebug = true;
+
+    public Rigidbody2D GetRigidBody => rb;
+
+    public void FreezePosition()
+    {
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void ToggleFreezePosition()
+    {
+        rb.isKinematic = !rb.isKinematic;
+
+        rb.constraints = rb.isKinematic ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (m_rb.velocity.y >= 0)
+        if (rb.velocity.y >= 0)
         {
             foreach (var item in collision.contacts)
             {
@@ -28,6 +43,6 @@ public class WorldTetriminioController : MonoBehaviour
         }
     }
 
-    private void OnValidate() { if (m_rb == null) { m_rb = GetComponent<Rigidbody2D>(); } }
+    private void OnValidate() { if (rb == null) { rb = GetComponent<Rigidbody2D>(); } }
 
 }

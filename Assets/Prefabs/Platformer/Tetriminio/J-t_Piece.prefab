@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 3778026735900253670}
   - component: {fileID: 481668353383081203}
   - component: {fileID: 481668353383081202}
+  - component: {fileID: 4755682992522453292}
   m_Layer: 9
   m_Name: J-t_Piece
   m_TagString: J
@@ -383,7 +384,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!66 &481668353383081202
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -402,16 +403,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 4899683640818867277}
-    m_ColliderPaths:
-    - - X: 4999707
-        Y: 15000000
-      - X: 4999707
-        Y: 25000000
-      - X: -5000000
-        Y: 24999707
-      - X: -4999707
-        Y: 15000000
   - m_Collider: {fileID: 8809701798437870823}
     m_ColliderPaths:
     - - X: 4999707
@@ -421,6 +412,16 @@ CompositeCollider2D:
       - X: -5000000
         Y: 4999707
       - X: -4999707
+        Y: -5000000
+  - m_Collider: {fileID: 9079254446514672670}
+    m_ColliderPaths:
+    - - X: -5000293
+        Y: -5000000
+      - X: -5000293
+        Y: 5000000
+      - X: -15000000
+        Y: 4999707
+      - X: -14999707
         Y: -5000000
   - m_Collider: {fileID: 2149224003092596642}
     m_ColliderPaths:
@@ -432,16 +433,16 @@ CompositeCollider2D:
         Y: 14999707
       - X: -4999707
         Y: 5000000
-  - m_Collider: {fileID: 9079254446514672670}
+  - m_Collider: {fileID: 4899683640818867277}
     m_ColliderPaths:
-    - - X: -5000293
-        Y: -5000000
-      - X: -5000293
-        Y: 5000000
-      - X: -15000000
-        Y: 4999707
-      - X: -14999707
-        Y: -5000000
+    - - X: 4999707
+        Y: 15000000
+      - X: 4999707
+        Y: 25000000
+      - X: -5000000
+        Y: 24999707
+      - X: -4999707
+        Y: 15000000
   m_CompositePaths:
     m_Paths:
     - - {x: -1.4999707, y: -0.4999707}
@@ -452,6 +453,18 @@ CompositeCollider2D:
       - {x: -1.5, y: 0.4999414}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &4755682992522453292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7010569199626710133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d786473dfd32119439b2b030e83edcac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8806264107686334245
 GameObject:
   m_ObjectHideFlags: 0
