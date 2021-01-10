@@ -86,6 +86,7 @@ public class Playfield : MonoBehaviour
                 return false;
         return true;
     }
+
     public void deleteFullRows()
     {
         for (int y = 0; y < h; ++y)

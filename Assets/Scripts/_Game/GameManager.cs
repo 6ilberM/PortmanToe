@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public string activeBlockTag;
     public int pullCharge = 1;
+
     public bool pullBlock;
     public bool spawnBlock;
     public bool tetrisPaused = true;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             tetrisPaused = !tetrisPaused;
         }

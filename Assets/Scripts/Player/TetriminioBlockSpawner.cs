@@ -1,31 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class SpawnBlock : MonoBehaviour
+[AddComponentMenu("Platformer/Tetriminio Spawner")]
+public class TetriminioBlockSpawner : MonoBehaviour
 {
-    public Transform spawnPointTran;
-    public GameObject IBlock;
-    public GameObject JBlock;
-    public GameObject LBlock;
-    public GameObject OBlock;
-    public GameObject SBlock;
-    public GameObject TBlock;
-    public GameObject ZBlock;
-    
+    public GameObject IBlock = default;
+    public GameObject JBlock = default;
+    public GameObject LBlock = default;
+    public GameObject OBlock = default;
+    public GameObject SBlock = default;
+    public GameObject TBlock = default;
+    public GameObject ZBlock = default;
+
+    public UnityEvent onTetrisPull;
 
     private void Start()
     {
-        
+
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(GameManager.Instance.pullCharge > 0)
+            if (GameManager.Instance.pullCharge > 0)
             {
                 GameManager.Instance.pullBlock = true;
                 SoundManager.Instance.PlaySound("SpawnBlock");
+
                 switch (GameManager.Instance.activeBlockTag)
                 {
                     case "I":

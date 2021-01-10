@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField, HideInInspector] private CircleCollider2D circleCollider;
     [SerializeField, HideInInspector] private Rigidbody2D rb;
     [SerializeField, HideInInspector] private CollisionHelper collisionsHelper;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private TetriminioBlockSpawner tetriminioSpawner;
 
-    //FSM
     #region FSM
     private PlayerBaseState m_currentState = null;
 
@@ -61,13 +62,20 @@ public class PlayerController : MonoBehaviour
         //Populate Input
         _horizontal = _vertical = 0;
 
-        if (Input.GetKey(KeyCode.A) && !(Input.GetKey(KeyCode.D))) { _horizontal = -1; }
+        if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) { _horizontal = -1; }
         else if (Input.GetKey(KeyCode.D)) { _horizontal = 1; }
 
         if (Input.GetKeyDown(KeyCode.W)) { m_currentState.OnPlayerJump(this); }
 
         if (Input.GetKey(KeyCode.W) && !(Input.GetKey(KeyCode.S))) { _vertical = -1; }
         else if (Input.GetKey(KeyCode.W)) { _vertical = 1; }
+
+        if (_horizontal != 0) { spriteRenderer.flipX = _horizontal < 0 ? true : false; }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //tetriminioSpawner.Spawn
+        }
 
         m_currentState.Update(this);
     }
