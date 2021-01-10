@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public string activeBlockTag;
+    public int activeBlockRot;
+    public int activeFakeRot;
+    public bool canPlace;
+    public bool destroyFake;
     public int pullCharge = 1;
 
     [Space(8)]

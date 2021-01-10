@@ -47,8 +47,10 @@ public class PlayerController : MonoBehaviour
 
     private WorldTetriminioController heldTetriminio = null;
     private bool isHolding = false;
+    private int eCounter = 0;
     internal Vector2 m_VelocityVar;
     private float coyoteTimer;
+    private GameObject instance;
 
     public float CoyoteTimer
     {
@@ -78,12 +80,31 @@ public class PlayerController : MonoBehaviour
         {
             if (tetriminioSpawner.TryPopulateTetriminio())
             {
-                var instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, parent: null, instantiateInWorldSpace: true);
-                var point = transform.position + Vector3.right * (spriteRenderer.flipX ? -2.5f : 2.5f);
-                instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
-
-                heldTetriminio = instance.GetComponent<WorldTetriminioController>();
-                isHolding = true;
+                if (eCounter == 0)
+                {
+                    
+                    GameManager.Instance.activeFakeRot = GameManager.Instance.activeBlockRot;
+                    Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -2.5f : 2.5f);
+                    instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeBlockRot - 90f), this.transform);
+                    instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
+                    eCounter = 1;
+                }
+                else
+                {
+                    if (GameManager.Instance.canPlace)
+                    {
+                        GameManager.Instance.destroyFake = true;
+                        GameManager.Instance.canPlace = false;
+                        Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -2.5f : 2.5f);
+                        instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeFakeRot - 90f));
+                        instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
+                        eCounter = 0;
+                        
+                        heldTetriminio = instance.GetComponent<WorldTetriminioController>();
+                        isHolding = true;
+                    }
+                }
+                
             }
         }
 
@@ -95,7 +116,14 @@ public class PlayerController : MonoBehaviour
         m_currentState.Update(this);
     }
 
-    private void FixedUpdate() { m_currentState.FixedUpdate(this); }
+    private void FixedUpdate() 
+    {
+        m_currentState.FixedUpdate(this);
+        if(rb.velocity.y > 10f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 10f);
+        }
+    }
 
     public float GetJumpForce(float f_override = 1f)
     {
