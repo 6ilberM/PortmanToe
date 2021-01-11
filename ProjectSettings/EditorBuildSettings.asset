@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayMovment.unity
     guid: b385e048dfd538a439c71ab1583ba683
+  - enabled: 1
+    path: Assets/Scenes/EndingScene.unity
+    guid: d1919d708f1ecbd4e8fa735f1afabb93
   m_configObjects: {}
