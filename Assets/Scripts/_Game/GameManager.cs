@@ -54,5 +54,9 @@ public class GameManager : MonoBehaviour
 
             pauseText.SetActive(tetrisPaused);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            this.onGameOver?.Invoke();
+        }
     }
 }

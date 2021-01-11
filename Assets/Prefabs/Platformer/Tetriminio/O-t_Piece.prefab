@@ -593,17 +593,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetAndRotations:
   - id: 0
-    offset: {x: 1.5, y: 0}
-    spawnPointOffset: 0
-  - id: 0
-    offset: {x: 1.5, y: 0}
-    spawnPointOffset: 0
-  - id: 0
-    offset: {x: 1.5, y: 0}
-    spawnPointOffset: 0
-  - id: 0
-    offset: {x: 1.5, y: 0}
-    spawnPointOffset: 0
+    offset: {x: 1, y: 0}
+    spawnPointOffset: 1
+  - id: 1
+    offset: {x: 1, y: 1}
+    spawnPointOffset: 1
+  - id: 2
+    offset: {x: 2, y: 2}
+    spawnPointOffset: -1
+  - id: 3
+    offset: {x: 2, y: 0}
+    spawnPointOffset: -1
   childRenderers:
   - {fileID: 4165536027106926298}
   - {fileID: 7884546255530229384}

@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBlockTag: 
   activeBlockRot: 0
+  spawnPoint1: {fileID: 0}
+  spawnPoint2: {fileID: 0}
   canPlace: 0
   pullCharge: 1
   spawnPoint: 0
