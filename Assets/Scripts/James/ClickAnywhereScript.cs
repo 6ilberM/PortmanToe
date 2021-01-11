@@ -19,7 +19,7 @@ public class ClickAnywhereScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SoundManager.Instance.PlaySound("TitleClick");
-            loader.LoadScene("PlayMovment");
+            loader.LoadScene("GameScene");
         }
     }
     IEnumerator Fade()

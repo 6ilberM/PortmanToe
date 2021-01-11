@@ -9,7 +9,13 @@ public class WorldTetriminioController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb = default;
     [SerializeField] private bool b_displayDebug = true;
 
+    [SerializeField] Vector2 positionOffset;
+
     public Rigidbody2D GetRigidBody => rb;
+
+    private void OnEnable() => FreezableTetriminioManager.allTheTetrisBlocks.Add(this);
+
+    private void OnDisable() => FreezableTetriminioManager.allTheTetrisBlocks.Remove(this);
 
     public void FreezePosition()
     {
