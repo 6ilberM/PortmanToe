@@ -8,6 +8,8 @@ public class TitleText : MonoBehaviour
     public Light2D lightToFade;
     public float eachFadeTime = 2f;
     public float fadeWaitTime = 5f;
+    public float minLuminosity = 1f; // min intensity
+    public float maxLuminosity = 5; // max intensity
 
     void Start()
     {
@@ -21,8 +23,7 @@ public class TitleText : MonoBehaviour
     }
     IEnumerator fadeInAndOut(Light2D lightToFade, bool fadeIn, float duration)
     {
-        float minLuminosity = 1f; // min intensity
-        float maxLuminosity = 5; // max intensity
+       
 
         float counter = 0f;
 
