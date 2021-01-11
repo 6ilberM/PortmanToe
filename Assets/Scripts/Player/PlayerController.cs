@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 #pragma warning restore 0414 // Remove unread private members
 
     private bool isHolding = false;
+
     internal Vector2 m_VelocityVar;
     private float coyoteTimer;
 
@@ -58,6 +59,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public SpriteRenderer GetSpriteRenderer => spriteRenderer;
+
+    private void Awake()
+    {
+        GameManager.Instance.onGameOver.AddListener(() => { isHolding = false; });
+    }
 
     private void Start() { ChangeState(m_groundedState); }
 
@@ -80,29 +86,26 @@ public class PlayerController : MonoBehaviour
         //This is Pulling The Block
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (tetriminioSpawner.TryPopulateTetriminio())
+            if (tetriminioSpawner.TryPopulateTetriminio() && !isHolding)
             {
                 //face Placement 
                 Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
 
                 heldTetriminio = Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeBlockRot), this.transform).GetComponent<WorldTetriminioController>();
+                GameManager.Instance.onPullBlock?.Invoke();
 
                 heldTetriminio.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
-
-            }
-            else if (GameManager.Instance.canPlace)
-            {
-                GameManager.Instance.canPlace = false;
-
                 isHolding = true;
             }
-
+            else if (GameManager.Instance.canPlace && isHolding)
+            {
+                GameManager.Instance.onPlaceBlock?.Invoke();
+                GameManager.Instance.canPlace = false;
+                isHolding = false;
+            }
         }
 
-        if (isHolding && Input.GetKeyDown(KeyCode.Space))
-        {
-            heldTetriminio.ToggleFreezePosition();
-        }
+        if (isHolding && Input.GetKeyDown(KeyCode.Space)) { heldTetriminio.ToggleFreezePosition(); }
 
         m_currentState.Update(this);
     }
@@ -131,6 +134,11 @@ public class PlayerController : MonoBehaviour
         m_currentState = state;
         m_currentState.EnterState(this);
 
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.onGameOver.RemoveListener(() => { isHolding = false; });
     }
 
     private void OnValidate()
