@@ -24,6 +24,7 @@ public class TetriminioOverlapper : MonoBehaviour
     [SerializeField, HideInInspector()] private Rigidbody2D rb = null;
     [SerializeField, HideInInspector()] private CompositeCollider2D compositeCollider = null;
 
+    public int cachedValue = 0;
     OffsetsPerRotation cachedOffset;
     private void Awake()
     {
@@ -38,22 +39,16 @@ public class TetriminioOverlapper : MonoBehaviour
     }
     private void Start()
     {
-        for (int i = 0; i < offsetAndRotations.Count; i++)
-        {
-            if (offsetAndRotations[i].id == (int)GameManager.Instance.activeBlockRot / 90)
-            {
-                cachedOffset = offsetAndRotations[i];
-            }
-        }
+        cachedValue = offsetAndRotations.FirstOrDefault(obj => obj.id == GameManager.Instance.activeBlockRot / 90).id;
     }
 
     private void Update()
     {
         transform.position = owner.transform.position
                              + new Vector3(
-                                 (owner.GetSpriteRenderer.flipX ? -cachedOffset.spawnPointOffset : 0)
-                                 + cachedOffset.offset.x * (owner.GetSpriteRenderer.flipX ? -1 : 1),
-                                 cachedOffset.offset.y,
+                                 (owner.GetSpriteRenderer.flipX ? -offsetAndRotations[cachedValue].spawnPointOffset : 0)
+                                 + offsetAndRotations[cachedValue].offset.x * (owner.GetSpriteRenderer.flipX ? -1 : 1),
+                                 offsetAndRotations[cachedValue].offset.y,
                                  0);
     }
 
