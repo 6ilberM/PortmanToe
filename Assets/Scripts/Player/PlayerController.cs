@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 #pragma warning restore 0414 // Remove unread private members
 
     private bool isHolding = false;
+    private bool alreadyPlaced = false;
 
     internal Vector2 m_VelocityVar;
     private float coyoteTimer;
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (isHolding && Input.GetKeyDown(KeyCode.Space)) { heldTetriminio.ToggleFreezePosition(); }
+        if (Input.GetKeyDown(KeyCode.Space)) { heldTetriminio.ToggleFreezePosition(); }
 
         m_currentState.Update(this);
     }

@@ -26,7 +26,7 @@ public class WorldTetriminioController : MonoBehaviour
     public void ToggleFreezePosition()
     {
         rb.isKinematic = !rb.isKinematic;
-
+        SoundManager.Instance.PlaySound("ice");
         rb.constraints = rb.isKinematic ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
     }
 
