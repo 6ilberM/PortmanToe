@@ -105,7 +105,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3140134996264508058}
   tetriminioSpawner: {fileID: 3643036707057944421}
   moveSpeed: 6.66
-  jumpHeight: 7
+  jumpHeight: 1.35
   fastFallMultiplier: 2.45
   m_smoothingFactor: 0.1666
 --- !u!114 &1695871855

@@ -62,10 +62,13 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Instance.onGameOver.AddListener(() => { isHolding = false; });
+        ChangeState(m_groundedState);
     }
 
-    private void Start() { ChangeState(m_groundedState); }
+    private void Start()
+    {
+        GameManager.Instance.onGameOver.AddListener(() => { isHolding = false; });
+    }
 
     private void Update()
     {
