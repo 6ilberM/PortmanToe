@@ -5,7 +5,7 @@ using UnityEngine;
 public class TetriminioOverlapper : MonoBehaviour
 {
     [System.Serializable]
-    public struct OffsetsPerRotation
+    public class OffsetsPerRotation
     {
         public int id;
         public Vector2 offset;
@@ -38,7 +38,13 @@ public class TetriminioOverlapper : MonoBehaviour
     }
     private void Start()
     {
-        cachedOffset = offsetAndRotations.FirstOrDefault(obj => obj.id == GameManager.Instance.activeBlockRot);
+        for (int i = 0; i < offsetAndRotations.Count; i++)
+        {
+            if (offsetAndRotations[i].id == (int)GameManager.Instance.activeBlockRot / 90)
+            {
+                cachedOffset = offsetAndRotations[i];
+            }
+        }
     }
 
     private void Update()
