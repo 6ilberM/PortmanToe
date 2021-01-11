@@ -50,7 +50,6 @@ public class TetriminioBlockSpawner : MonoBehaviour
                     break;
             }
             result = true;
-            GameManager.Instance.onPullBlock?.Invoke();
             SoundManager.Instance.PlaySound("SpawnBlock");
         }
 

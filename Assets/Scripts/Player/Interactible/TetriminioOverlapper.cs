@@ -6,7 +6,7 @@ public class TetriminioOverlapper : MonoBehaviour
     [System.Serializable]
     public struct OffsetsPerRotation
     {
-        public string id;
+        public int id;
         public Vector2 offset;
     }
 
@@ -36,7 +36,7 @@ public class TetriminioOverlapper : MonoBehaviour
 
     private void Update()
     {
-
+        transform.position = owner.transform.position /*+ GameManager.Instance.activeBlockRot */ * (owner.GetSpriteRenderer.flipX ? -1 : 1);
     }
 
     private void DestroyHelper()
@@ -51,7 +51,7 @@ public class TetriminioOverlapper : MonoBehaviour
 
         rb.simulated = true;
         rb.isKinematic = false;
-        compositeCollider.isTrigger = true;
+        compositeCollider.isTrigger = false;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         this.transform.SetParent(null);
 
