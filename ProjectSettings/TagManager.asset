@@ -11,6 +11,8 @@ TagManager:
   - S
   - T
   - Z
+  - Enemy
+  - KillBox
   layers:
   - Default
   - TransparentFX

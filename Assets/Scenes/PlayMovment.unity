@@ -221,9 +221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBlockTag: 
   activeBlockRot: 0
-  activeFakeRot: 0
+  spawnPoint1: {fileID: 1461092236}
+  spawnPoint2: {fileID: 1830905083}
   canPlace: 0
-  destroyFake: 0
   pullCharge: 1
   spawnPoint: 0
   lives: 3
@@ -231,7 +231,15 @@ MonoBehaviour:
   onPullBlock:
     m_PersistentCalls:
       m_Calls: []
-  spawnBlock: 0
+  onPlaceBlock:
+    m_PersistentCalls:
+      m_Calls: []
+  onSpawnBlock:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls: []
   tetrisPaused: 1
   pauseText: {fileID: 503312755}
 --- !u!4 &115189803
@@ -3666,7 +3674,7 @@ GameObject:
   - component: {fileID: 616340952}
   m_Layer: 0
   m_Name: KillBox
-  m_TagString: Untagged
+  m_TagString: KillBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84325,7 +84333,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1461092236}
-  - component: {fileID: 1461092235}
   - component: {fileID: 1461092234}
   m_Layer: 0
   m_Name: SpawnPoint1
@@ -84360,18 +84367,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.0975685, y: 2.754846}
   m_EdgeRadius: 0
---- !u!114 &1461092235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461092233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c43135f737eb942b2d50cde4df4e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1461092236
 Transform:
   m_ObjectHideFlags: 0
@@ -84683,7 +84678,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1830905083}
-  - component: {fileID: 1830905082}
   - component: {fileID: 1830905081}
   m_Layer: 0
   m_Name: SpawnPoint2
@@ -84718,18 +84712,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.349846, y: 2.927143}
   m_EdgeRadius: 0
---- !u!114 &1830905082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830905080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c43135f737eb942b2d50cde4df4e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1830905083
 Transform:
   m_ObjectHideFlags: 0

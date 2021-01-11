@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     public string activeBlockTag;
 
     public int activeBlockRot = 0;
-
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
     public bool canPlace;
     public int pullCharge = 1;
     public int spawnPoint;
