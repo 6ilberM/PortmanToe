@@ -6,11 +6,16 @@ public class FreezableTetriminioManager : MonoBehaviour
 {
     public static List<WorldTetriminioController> allTheTetrisBlocks = new List<WorldTetriminioController>();
 
-    private void Awake() => GameManager.Instance.onGameOver.AddListener(DestoyAllTetrisBlocks);
+    private void Start() => GameManager.Instance.onGameOver.AddListener(DestoyAllTetrisBlocks);
 
     private void DestoyAllTetrisBlocks()
     {
-        foreach (WorldTetriminioController tetriminio in allTheTetrisBlocks) { Destroy(tetriminio); }
+        for (int i = 0; i < allTheTetrisBlocks.Count; i++)
+        {
+            WorldTetriminioController tetriminio = allTheTetrisBlocks[i];
+            Destroy(tetriminio.gameObject);
+            allTheTetrisBlocks.Clear();
+        }
     }
 
     private void OnDestroy()
