@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TetriminioOverlapper : MonoBehaviour
@@ -22,6 +23,7 @@ public class TetriminioOverlapper : MonoBehaviour
     [SerializeField, HideInInspector()] private Rigidbody2D rb = null;
     [SerializeField, HideInInspector()] private CompositeCollider2D compositeCollider = null;
 
+    OffsetsPerRotation cachedOffset;
     private void Awake()
     {
         owner = transform.parent.GetComponent<PlayerController>();
@@ -32,11 +34,17 @@ public class TetriminioOverlapper : MonoBehaviour
         rb.isKinematic = true;
         compositeCollider.isTrigger = true;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
+
+        cachedOffset = offsetAndRotations.First(obj => obj.id == GameManager.Instance.activeBlockRot);
     }
 
     private void Update()
     {
-        transform.position = owner.transform.position /*+ GameManager.Instance.activeBlockRot */ * (owner.GetSpriteRenderer.flipX ? -1 : 1);
+        transform.position = owner.transform.position
+                             + new Vector3(
+                                 cachedOffset.offset.x * (owner.GetSpriteRenderer.flipX ? -1 : 1),
+                                 cachedOffset.offset.y,
+                                 0);
     }
 
     private void DestroyHelper()

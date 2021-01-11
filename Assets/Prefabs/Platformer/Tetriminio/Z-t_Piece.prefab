@@ -255,6 +255,7 @@ MonoBehaviour:
     m_Bits: 512
   rb: {fileID: 3300028810401135398}
   b_displayDebug: 1
+  positionOffset: {x: 0, y: 0}
 --- !u!114 &-8904693148594100521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,12 +268,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd1c097415f49645bc7449854816aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetAndRotations:
+  - id: 0
+    offset: {x: 0, y: 555}
   childRenderers:
   - {fileID: 1686755393094651256}
   - {fileID: 6112774934483157493}
   - {fileID: 8245246441423222082}
   - {fileID: 2697747772001268208}
   cachedColor: {r: 1, g: 0, b: 0, a: 1}
+  worldTetriminio: {fileID: 7580335441351787820}
+  rb: {fileID: 3300028810401135398}
+  compositeCollider: {fileID: 3300028810401135397}
 --- !u!1 &5895720790208864246
 GameObject:
   m_ObjectHideFlags: 0

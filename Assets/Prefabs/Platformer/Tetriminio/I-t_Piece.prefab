@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetAndRotations:
-  - id: First
-    offset: {x: 1, y: 1}
+  - id: 0
+    offset: {x: 0, y: 555}
   childRenderers:
   - {fileID: 5098521497317874996}
   - {fileID: 5098521497664803384}
@@ -384,6 +384,7 @@ MonoBehaviour:
   cachedColor: {r: 0, g: 1, b: 0.9702971, a: 1}
   worldTetriminio: {fileID: 3079204563727164390}
   rb: {fileID: 5098521496661252184}
+  compositeCollider: {fileID: 5098521496661252187}
 --- !u!1 &5098521497317874998
 GameObject:
   m_ObjectHideFlags: 0
