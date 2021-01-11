@@ -43,7 +43,7 @@ public class TetriminioOverlapper : MonoBehaviour
     {
         transform.position = owner.transform.position
                              + new Vector3(
-                                 (owner.GetSpriteRenderer.flipX ? cachedOffset.spawnPointOffset : 0)
+                                 (owner.GetSpriteRenderer.flipX ? -cachedOffset.spawnPointOffset : 0)
                                  + cachedOffset.offset.x * (owner.GetSpriteRenderer.flipX ? -1 : 1),
                                  cachedOffset.offset.y,
                                  0);
