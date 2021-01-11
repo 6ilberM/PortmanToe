@@ -45,12 +45,11 @@ public class PlayerController : MonoBehaviour
     private int _vertical = 0;
 #pragma warning restore 0414 // Remove unread private members
 
-    private WorldTetriminioController heldTetriminio = null;
     private bool isHolding = false;
-    private int ePressCounter = 0;
     internal Vector2 m_VelocityVar;
     private float coyoteTimer;
-    private GameObject instance;
+
+    private WorldTetriminioController heldTetriminio = null;
 
     public float CoyoteTimer
     {
@@ -78,33 +77,26 @@ public class PlayerController : MonoBehaviour
         if (_horizontal != 0) { spriteRenderer.flipX = _horizontal < 0 ? true : false; }
 
         //ToDo: Move Functionality functionality under this to other functions or classes
+        //This is Pulling The Block
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (tetriminioSpawner.TryPopulateTetriminio())
             {
-                if (ePressCounter == 0)
-                {
-                    GameManager.Instance.activeFakeRot = GameManager.Instance.activeBlockRot;
-                    Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
-                    instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeBlockRot - 90f), this.transform);
-                    instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
-                    ePressCounter = 1;
-                }
-                else if (GameManager.Instance.canPlace)
-                {
-                    GameManager.Instance.destroyFake = true;
-                    GameManager.Instance.canPlace = false;
-                    Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
-                    instance = (GameObject)Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeFakeRot - 90f));
-                    instance.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
-                    ePressCounter = 0;
+                //face Placement 
+                Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
 
-                    heldTetriminio = instance.GetComponent<WorldTetriminioController>();
-                    isHolding = true;
+                heldTetriminio = Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeBlockRot - 90f), this.transform).GetComponent<WorldTetriminioController>();
 
-                }
+                heldTetriminio.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
 
             }
+            else if (GameManager.Instance.canPlace)
+            {
+                GameManager.Instance.canPlace = false;
+
+                isHolding = true;
+            }
+
         }
 
         if (isHolding && Input.GetKeyDown(KeyCode.Space))

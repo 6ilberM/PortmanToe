@@ -36,6 +36,7 @@ public class Group : MonoBehaviour
         if (!GameManager.Instance.tetrisPaused)
         {
             GameManager.Instance.activeBlockRot = rotation * 90;
+
             // Move Left
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -126,7 +127,7 @@ public class Group : MonoBehaviour
                     SoundManager.Instance.PlaySound("TetrisLand");
 
                     // Spawn next Group
-                    GameManager.Instance.spawnBlock = true;
+                    GameManager.Instance.onSpawnBlock?.Invoke();
 
                     // Disable script
                     enabled = false;
@@ -136,22 +137,17 @@ public class Group : MonoBehaviour
             }
 
         }
-        // Deletes block if player pulls
     }
 
+    /// <summary>
+    /// DeletesBlock if PlayerPulls
+    /// </summary>
     private void PullBlock()
     {
-        if (this.enabled)
+        if (enabled)
         {
-            if (!GameManager.Instance.destroyFake)
-            {
-                GameManager.Instance.spawnBlock = true;
-                Debug.Log("Been Pulled");
-                Destroy(this.gameObject);
-            }
-        } else
-        {
-
+            GameManager.Instance.onSpawnBlock?.Invoke();
+            Destroy(this.gameObject);
         }
     }
 
@@ -171,7 +167,7 @@ public class Group : MonoBehaviour
             if (Playfield.Instance.grid[(int)v.x, (int)v.y] != null &&
                 Playfield.Instance.grid[(int)v.x, (int)v.y].parent != transform)
             {
-                Debug.Log("Hit something");
+                Debug.Log("Boundary Collssion Detection");
                 return false;
             }
         }

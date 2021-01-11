@@ -1,32 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public string activeBlockTag;
+
     public int activeBlockRot;
-    public int activeFakeRot;
+
     public bool canPlace;
     public int pullCharge = 1;
 
     //ToDo: Replace With PlaceBlockEvent
 
-    public bool destroyFake;
-
     [Space(8)]
-    public UnityEngine.Events.UnityEvent onPullBlock;
+    public UnityEvent onPullBlock;
 
     [Space(6)]
-    public UnityEngine.Events.UnityEvent onPlaceBlock;
+    public UnityEvent onPlaceBlock;
 
+    [Space(6)]
+    public UnityEvent onSpawnBlock;
 
-    public bool spawnBlock;
+    [Space(6)]
+    public UnityEvent onGameOver;
+
     public bool tetrisPaused = false;
     public GameObject pauseText;
-    public static GameManager Instance { get { return _instance; } }
 
+    public static GameManager Instance { get { return _instance; } }
 
     private void Awake()
     {
@@ -36,6 +38,9 @@ public class GameManager : MonoBehaviour
         }
         else { _instance = this; }
     }
+
+    [ContextMenu("Debug: GameOver")]
+    public void DebugGameOver() => onGameOver?.Invoke();
 
     private void Update()
     {

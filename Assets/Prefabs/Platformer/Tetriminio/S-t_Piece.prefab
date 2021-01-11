@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 1949036249615282792}
   - component: {fileID: 1949036249615282791}
   - component: {fileID: 8148824626670528003}
+  - component: {fileID: -1544615551251857728}
   m_Layer: 9
   m_Name: S-t_Piece
   m_TagString: S
@@ -353,7 +354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5525594397634912924}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d786473dfd32119439b2b030e83edcac, type: 3}
   m_Name: 
@@ -363,6 +364,24 @@ MonoBehaviour:
     m_Bits: 512
   rb: {fileID: 1949036249615282792}
   b_displayDebug: 1
+--- !u!114 &-1544615551251857728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525594397634912924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd1c097415f49645bc7449854816aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childRenderers:
+  - {fileID: 6363850726281624173}
+  - {fileID: 821002653170702759}
+  - {fileID: 1544384514557911958}
+  - {fileID: 5333836731464633546}
+  cachedColor: {r: 0.10893285, g: 1, b: 0, a: 1}
 --- !u!1 &7236648036169102878
 GameObject:
   m_ObjectHideFlags: 0

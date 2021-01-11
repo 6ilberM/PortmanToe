@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 481668353383081203}
   - component: {fileID: 481668353383081202}
   - component: {fileID: 4755682992522453292}
+  - component: {fileID: -6771051696298646635}
   m_Layer: 9
   m_Name: J-t_Piece
   m_TagString: J
@@ -460,7 +461,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7010569199626710133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d786473dfd32119439b2b030e83edcac, type: 3}
   m_Name: 
@@ -470,6 +471,24 @@ MonoBehaviour:
     m_Bits: 512
   rb: {fileID: 481668353383081203}
   b_displayDebug: 1
+--- !u!114 &-6771051696298646635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7010569199626710133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd1c097415f49645bc7449854816aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childRenderers:
+  - {fileID: 3691934476743240697}
+  - {fileID: 2045722281753735346}
+  - {fileID: 3032918376633497041}
+  - {fileID: 6494264608919621112}
+  cachedColor: {r: 0.008216858, g: 0, b: 1, a: 1}
 --- !u!1 &8806264107686334245
 GameObject:
   m_ObjectHideFlags: 0
