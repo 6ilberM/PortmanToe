@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 
     public bool canPlace;
     public int pullCharge = 1;
+    public int spawnPoint;
+    public int lives = 3;
+    public GameObject[] spawnedBlocks;
 
     //ToDo: Replace With PlaceBlockEvent
 
@@ -18,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     [Space(6)]
     public UnityEvent onPlaceBlock;
+    public GameObject pauseText;
 
     [Space(6)]
     public UnityEvent onSpawnBlock;
