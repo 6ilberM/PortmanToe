@@ -360,6 +360,7 @@ MonoBehaviour:
     m_Bits: 512
   rb: {fileID: 5098521496661252184}
   b_displayDebug: 1
+  positionOffset: {x: 0, y: 0}
 --- !u!114 &5359743611821675059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd1c097415f49645bc7449854816aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetAndRotations:
+  - id: First
+    offset: {x: 1, y: 1}
   childRenderers:
   - {fileID: 5098521497317874996}
   - {fileID: 5098521497664803384}

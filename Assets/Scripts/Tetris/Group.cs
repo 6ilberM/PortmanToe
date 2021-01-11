@@ -10,7 +10,7 @@ public class Group : MonoBehaviour
 
     //public GameObject playfieldHolder;
     // Rotation index
-    public int rotation = 1;
+    public int rotation = 0;
 
     private void Awake()
     {
@@ -77,22 +77,14 @@ public class Group : MonoBehaviour
                 {
                     // It's valid. Update grid.
                     updateGrid();
-                    if (rotation == 1)
+
+                    rotation++;
+
+                    if (rotation > 3)
                     {
-                        rotation = 2;
+                        rotation = 0;
                     }
-                    else if (rotation == 2)
-                    {
-                        rotation = 3;
-                    }
-                    else if (rotation == 3)
-                    {
-                        rotation = 4;
-                    }
-                    else
-                    {
-                        rotation = 1;
-                    }
+
                 }
                 else
                     // It's not valid. revert.

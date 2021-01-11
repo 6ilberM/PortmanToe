@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 //face Placement 
                 Vector3 point = transform.position + Vector3.right * (spriteRenderer.flipX ? -1.5f : 1.5f);
 
-                heldTetriminio = Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeBlockRot - 90f), this.transform).GetComponent<WorldTetriminioController>();
+                heldTetriminio = Instantiate(tetriminioSpawner.Tetrminio, point, Quaternion.Euler(0, 0, GameManager.Instance.activeBlockRot), this.transform).GetComponent<WorldTetriminioController>();
 
                 heldTetriminio.transform.position = new Vector3(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y), point.z);
 

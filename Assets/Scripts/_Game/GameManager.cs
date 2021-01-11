@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public string activeBlockTag;
 
-    public int activeBlockRot;
+    public int activeBlockRot = 0;
 
     public bool canPlace;
     public int pullCharge = 1;
@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
 
     [Space(6)]
     public UnityEvent onPlaceBlock;
-    public GameObject pauseText;
 
     [Space(6)]
     public UnityEvent onSpawnBlock;
