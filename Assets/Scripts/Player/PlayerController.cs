@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (isHolding && Input.GetKeyDown(KeyCode.Space)) { heldTetriminio.ToggleFreezePosition(); }
+        if (Input.GetKeyDown(KeyCode.Space) && heldTetriminio.enabled) { heldTetriminio.ToggleFreezePosition(); }
 
         m_currentState.Update(this);
     }
@@ -127,10 +127,10 @@ public class PlayerController : MonoBehaviour
         return Mathf.Sqrt(rb.gravityScale * Physics2D.gravity.magnitude * 2 * jumpHeight * Mathf.Pow(rb.mass, 2)) * f_override;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) 
-    { 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         m_currentState.OnCollisionEnter(this, collision);
-        if(collision.gameObject.CompareTag("KillBox") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("KillBox") || collision.gameObject.CompareTag("Enemy"))
         {
             ResetPlayer();
         }
@@ -174,7 +174,8 @@ public class PlayerController : MonoBehaviour
                 this.transform.position = GameManager.Instance.spawnPoint2.position;
             }
             GameManager.Instance.onGameOver?.Invoke();
-        } else
+        }
+        else
         {
             GameManager.Instance.spawnPoint = 1;
             this.transform.position = GameManager.Instance.spawnPoint1.position;
