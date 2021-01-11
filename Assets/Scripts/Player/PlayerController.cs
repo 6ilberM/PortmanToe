@@ -124,7 +124,14 @@ public class PlayerController : MonoBehaviour
         return Mathf.Sqrt(rb.gravityScale * Physics2D.gravity.magnitude * 2 * jumpHeight * Mathf.Pow(rb.mass, 2)) * f_override;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) { m_currentState.OnCollisionEnter(this, collision); }
+    private void OnCollisionEnter2D(Collision2D collision) 
+    { 
+        m_currentState.OnCollisionEnter(this, collision);
+        if(collision.gameObject.CompareTag("KillBox") || collision.gameObject.CompareTag("Enemy"))
+        {
+            ResetPlayer();
+        }
+    }
 
     public void ChangeState(PlayerBaseState state)
     {
@@ -148,5 +155,17 @@ public class PlayerController : MonoBehaviour
         if (circleCollider == null) { circleCollider = GetComponent<CircleCollider2D>(); }
         if (rb == null) { rb = GetComponent<Rigidbody2D>(); }
         if (collisionsHelper == null) { collisionsHelper = GetComponent<CollisionHelper>(); }
+    }
+    void ResetPlayer()
+    {
+        if (GameManager.Instance.spawnPoint == 1) 
+        {
+            this.transform.position = GameManager.Instance.spawnPoint1.position;
+        }
+        else
+        {
+            this.transform.position = GameManager.Instance.spawnPoint2.position;
+        }
+        GameManager.Instance.onGameOver?.Invoke();
     }
 }
