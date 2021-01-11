@@ -9,6 +9,7 @@ public class TetriminioOverlapper : MonoBehaviour
     {
         public int id;
         public Vector2 offset;
+        public float spawnPointOffset;
     }
 
     public List<OffsetsPerRotation> offsetAndRotations = new List<OffsetsPerRotation>();
@@ -42,7 +43,8 @@ public class TetriminioOverlapper : MonoBehaviour
     {
         transform.position = owner.transform.position
                              + new Vector3(
-                                 cachedOffset.offset.x * (owner.GetSpriteRenderer.flipX ? -1 : 1),
+                                 (owner.GetSpriteRenderer.flipX ? cachedOffset.spawnPointOffset : 0)
+                                 + cachedOffset.offset.x * (owner.GetSpriteRenderer.flipX ? -1 : 1),
                                  cachedOffset.offset.y,
                                  0);
     }
