@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && heldTetriminio.enabled) { heldTetriminio.ToggleFreezePosition(); }
+        if (Input.GetKeyDown(KeyCode.Space) && !isHolding) { heldTetriminio.ToggleFreezePosition(); }
 
         m_currentState.Update(this);
     }

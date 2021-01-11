@@ -66,6 +66,7 @@ public class TetriminioOverlapper : MonoBehaviour
         compositeCollider.isTrigger = false;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         this.transform.SetParent(null);
+        worldTetriminio.enabled = true;
 
         Destroy(this);
     }
