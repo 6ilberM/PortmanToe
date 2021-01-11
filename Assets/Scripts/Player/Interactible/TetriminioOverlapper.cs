@@ -35,8 +35,10 @@ public class TetriminioOverlapper : MonoBehaviour
         rb.isKinematic = true;
         compositeCollider.isTrigger = true;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
-
-        cachedOffset = offsetAndRotations.First(obj => obj.id == GameManager.Instance.activeBlockRot);
+    }
+    private void Start()
+    {
+        cachedOffset = offsetAndRotations.FirstOrDefault(obj => obj.id == GameManager.Instance.activeBlockRot);
     }
 
     private void Update()
