@@ -12,6 +12,10 @@ public class Group : MonoBehaviour
     // Rotation index
     public int rotation = 0;
 
+    public bool buttonDownHeld { get; private set; }
+
+    private float fastFallTimer;
+
     private void Awake()
     {
         GameManager.Instance.onPullBlock.AddListener(PullBlock);
@@ -92,9 +96,12 @@ public class Group : MonoBehaviour
             }
 
             // Move Downwards and Fall
-            else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-                     Time.time - lastFall >= 1)
+            else if (Input.GetKeyDown(KeyCode.DownArrow)
+                || (Input.GetKey(KeyCode.DownArrow) && fastFallTimer <= 0)
+                || Time.time - lastFall >= 1)
             {
+                buttonDownHeld = true;
+
                 // Modify position
                 transform.position += new Vector3(0, -1, 0);
 
@@ -126,9 +133,20 @@ public class Group : MonoBehaviour
                 }
 
                 lastFall = Time.time;
+
+                fastFallTimer = 0.135f;
+
             }
 
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                buttonDownHeld = false;
+                fastFallTimer = 1.2f;
+            }
+
+            if (buttonDownHeld && fastFallTimer > 0) { fastFallTimer -= Time.deltaTime; }
         }
+
     }
 
     /// <summary>
