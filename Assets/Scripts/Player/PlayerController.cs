@@ -161,14 +161,24 @@ public class PlayerController : MonoBehaviour
     }
     void ResetPlayer()
     {
-        if (GameManager.Instance.spawnPoint == 1) 
+        SoundManager.Instance.PlaySound("Death02");
+        if (GameManager.Instance.lives != 0)
         {
+            GameManager.Instance.lives--;
+            if (GameManager.Instance.spawnPoint == 1)
+            {
+                this.transform.position = GameManager.Instance.spawnPoint1.position;
+            }
+            else
+            {
+                this.transform.position = GameManager.Instance.spawnPoint2.position;
+            }
+            GameManager.Instance.onGameOver?.Invoke();
+        } else
+        {
+            GameManager.Instance.spawnPoint = 1;
             this.transform.position = GameManager.Instance.spawnPoint1.position;
+            GameManager.Instance.lives = 3;
         }
-        else
-        {
-            this.transform.position = GameManager.Instance.spawnPoint2.position;
-        }
-        GameManager.Instance.onGameOver?.Invoke();
     }
 }
