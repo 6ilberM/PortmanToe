@@ -39,7 +39,7 @@ public class Group : MonoBehaviour
     {
         if (!GameManager.Instance.tetrisPaused)
         {
-            GameManager.Instance.activeBlockRot = rotation * 90;
+            GameManager.Instance.activeBlockRot = rotation * -90;
 
             // Move Left
             if (Input.GetKeyDown(KeyCode.LeftArrow))

@@ -39,7 +39,7 @@ public class TetriminioOverlapper : MonoBehaviour
     }
     private void Start()
     {
-        cachedValue = offsetAndRotations.FirstOrDefault(obj => obj.id == GameManager.Instance.activeBlockRot / 90).id;
+        cachedValue = offsetAndRotations.FirstOrDefault(obj => obj.id == GameManager.Instance.activeBlockRot / -90).id;
     }
 
     private void Update()

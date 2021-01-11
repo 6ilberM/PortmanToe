@@ -382,10 +382,10 @@ MonoBehaviour:
     offset: {x: 2, y: 0}
     spawnPointOffset: 0
   - id: 1
-    offset: {x: 1, y: 2}
-    spawnPointOffset: 0
+    offset: {x: 1.1, y: 1.1}
+    spawnPointOffset: 1
   - id: 2
-    offset: {x: 2, y: 0}
+    offset: {x: 2, y: 1}
     spawnPointOffset: 0
   - id: 3
     offset: {x: 1, y: 2}
@@ -399,6 +399,7 @@ MonoBehaviour:
   worldTetriminio: {fileID: 8148824626670528003}
   rb: {fileID: 1949036249615282792}
   compositeCollider: {fileID: 1949036249615282791}
+  cachedValue: 0
 --- !u!1 &7236648036169102878
 GameObject:
   m_ObjectHideFlags: 0

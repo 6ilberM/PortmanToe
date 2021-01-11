@@ -72,6 +72,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetPlayer();
+        }
         //Populate Input
         _horizontal = _vertical = 0;
 
@@ -103,6 +107,7 @@ public class PlayerController : MonoBehaviour
             else if (GameManager.Instance.canPlace && isHolding)
             {
                 GameManager.Instance.onPlaceBlock?.Invoke();
+                GameManager.Instance.pullCharge--;
                 GameManager.Instance.canPlace = false;
                 isHolding = false;
             }

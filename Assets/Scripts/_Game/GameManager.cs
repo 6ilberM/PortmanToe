@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public int pullCharge = 1;
     public int spawnPoint;
     public int lives = 3;
-    public GameObject[] spawnedBlocks;
+    
 
     //ToDo: Replace With PlaceBlockEvent
 
